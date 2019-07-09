@@ -7,23 +7,13 @@ var bodyParser = require("body-parser");
 var db = require("./models");
 
 
-var options = {
-	user: "root",
-    password: "password",
-    database: "fire",
-    host: "127.0.0.1",
-    port: 3306
-};
-var sessionStore = new MySQLStore(options);
-
-
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'client/build/')));
 
 
-routes(app);
+// routes(app);
 
 db.sequelize.sync().then(function() {
   app.listen(port, function() {
